@@ -238,7 +238,8 @@ def train():
 
     # select model
     if args.model == 'bart':
-        args.model_checkpoint = "prev_trained_model/bart"
+        # args.model_checkpoint = "prev_trained_model/bart"
+        args.model_checkpoint = 'facebook/bart-base'
     elif args.model == 'bart-medium':
         args.model_checkoint = 'prev_trained_model/bart-medium'
     elif args.model == 'bart-large':
