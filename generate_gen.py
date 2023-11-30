@@ -26,7 +26,7 @@ from transformers import (
 from transformers.modeling_outputs import BaseModelOutput
 
 from model.VSBart import VSTARBARTGenerationModel
-from data.dataset import DataSet, collate_fn, get_dataset, build_input_from_segments
+from data.gen_dataset import DataSet, collate_fn, get_dataset, build_input_from_segments
 from utils.eval import evaluate
 from utils.utils import rouge_n
 

@@ -34,7 +34,7 @@ from transformers.utils.dummy_pt_objects import Adafactor
 from model.VSBart import VSTARBARTGenerationModel
 from utils.eval import evaluate
 from utils.utils import bleu_n, rouge_n
-from generate import batch_beam_search, batch_greedy_search
+from generate_gen import batch_beam_search, batch_greedy_search
 from data.gen_dataset import DataSet, collate_fn, get_dataset
 
 SPECIAL_TOKENS = ["<s>", "</s>", "<text>", "<sep>", "<video>", "<pad>"]
@@ -222,19 +222,19 @@ def train():
     args.log_path = 'ckpts/' + args.exp + '/'
     args.tb_path = 'tb_logs/' + args.exp + '/'
     # args.device = 'cpu'
-    if args.device == 'cuda':
-        if args.wait != '':
-            args.gpuid = get_gpu_id(12000, args.wait)
-        else:
-            if args.gpuid == '':
-                args.gpuid = get_gpu_id(12000)
+    # if args.device == 'cuda':
+    #     if args.wait != '':
+    #         args.gpuid = get_gpu_id(12000, args.wait)
+    #     else:
+    #         if args.gpuid == '':
+    #             args.gpuid = get_gpu_id(12000)
         
-        # args.train_batch_size = 2
-        # args.valid_batch_size = 2
-        # args.gpuid = '5'
-        # args.gpuid = ''
-        if args.gpuid != '':
-            args.device = 'cuda:' + args.gpuid
+    #     # args.train_batch_size = 2
+    #     # args.valid_batch_size = 2
+    #     # args.gpuid = '5'
+    #     # args.gpuid = ''
+    #     if args.gpuid != '':
+    #         args.device = 'cuda:' + args.gpuid
 
     # select model
     if args.model == 'bart':
